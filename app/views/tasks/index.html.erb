@@ -2,7 +2,11 @@
 <ul>
   <% @tasks.each do |task| %>
   <li>
-    <input type="checkbox" <%= task.completed? ? "checked" : "" %> ><%= link_to task.title, task_path(task) %>
+    <input type="checkbox" <%= task.completed? ? "checked" : "" %> >
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to "Remove", task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure to delete '#{task.title}' ?" } %>
   </li>
   <% end %>
 </ul>
